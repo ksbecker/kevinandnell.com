@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35219.272
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web", "Web\Web.csproj", "{D0EA87A1-AEAF-4380-B374-9F6A138DDBC8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "Persistence\Persistence.csproj", "{28E11F72-2E6F-4D26-8068-C3F34A3E81B7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D0EA87A1-AEAF-4380-B374-9F6A138DDBC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0EA87A1-AEAF-4380-B374-9F6A138DDBC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0EA87A1-AEAF-4380-B374-9F6A138DDBC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0EA87A1-AEAF-4380-B374-9F6A138DDBC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28E11F72-2E6F-4D26-8068-C3F34A3E81B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28E11F72-2E6F-4D26-8068-C3F34A3E81B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28E11F72-2E6F-4D26-8068-C3F34A3E81B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28E11F72-2E6F-4D26-8068-C3F34A3E81B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6624042F-0DB3-4CC6-A96F-9DBFB434913A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6624042F-0DB3-4CC6-A96F-9DBFB434913A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6624042F-0DB3-4CC6-A96F-9DBFB434913A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6624042F-0DB3-4CC6-A96F-9DBFB434913A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FE5BB8CE-0892-4B4A-9369-85C47005B403}
+	EndGlobalSection
+EndGlobal

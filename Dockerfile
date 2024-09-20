@@ -11,9 +11,8 @@ EXPOSE 8080
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["Web/Web.csproj", "Web/"]
-COPY ["Persistence/Persistence.csproj", "Persistence/"]
-RUN dotnet restore "./Web/Web.csproj"
+COPY ["src/Web/Web.csproj", "Web/"]
+RUN dotnet restore "./src/Web/Web.csproj"
 COPY . .
 WORKDIR "/src/Web"
 RUN dotnet build "./Web.csproj" -c $BUILD_CONFIGURATION -o /app/build

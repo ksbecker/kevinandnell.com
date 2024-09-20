@@ -51,7 +51,7 @@
                 "pull": true
             },
             "netCore": {
-                "appProject": "${workspaceFolder}/Web/Web.csproj"
+                "appProject": "${workspaceFolder}/src/Web/Web.csproj"
             }
         },
         {
@@ -71,7 +71,7 @@
                 "pull": true
             },
             "netCore": {
-                "appProject": "${workspaceFolder}/Web/Web.csproj"
+                "appProject": "${workspaceFolder}/src/Web/Web.csproj"
             }
         },
         {
@@ -82,7 +82,7 @@
             ],
             "dockerRun": {},
             "netCore": {
-                "appProject": "${workspaceFolder}/Web/Web.csproj",
+                "appProject": "${workspaceFolder}/src/Web/Web.csproj",
                 "enableDebugging": true
             }
         },
@@ -94,7 +94,7 @@
             ],
             "dockerRun": {},
             "netCore": {
-                "appProject": "${workspaceFolder}/Web/Web.csproj"
+                "appProject": "${workspaceFolder}/src/Web/Web.csproj"
             }
         }
     ]

@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/www.kevinandnell.com.sln",
+                "${workspaceFolder}/kevinandnell.com.sln",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary;ForceNoAlign"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/www.kevinandnell.com.sln",
+                "${workspaceFolder}/kevinandnell.com.sln",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary;ForceNoAlign"
             ],
@@ -33,7 +33,7 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/www.kevinandnell.com.sln"
+                "${workspaceFolder}/kevinandnell.com.sln"
             ],
             "problemMatcher": "$msCompile"
         },
@@ -61,7 +61,7 @@
                 "build"
             ],
             "dockerBuild": {
-                "tag": "wwwkevinandnellcom:latest",
+                "tag": "kevinandnellcom:latest",
                 "dockerfile": "${workspaceFolder}/Dockerfile",
                 "context": "${workspaceFolder}",
                 "platform": {

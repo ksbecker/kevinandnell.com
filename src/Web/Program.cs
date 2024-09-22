@@ -1,4 +1,5 @@
 using Web.Components;
+using Web.Features.Email;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services
     .AddRazorComponents()
     .AddInteractiveServerComponents();
+
+builder.Services.Configure<EmailServiceOptions>(
+    builder.Configuration.GetSection(EmailServiceOptions.EmailService));
 
 var app = builder.Build();
 

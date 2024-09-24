@@ -15,15 +15,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    -name: Replace properites in appsettings.json
-     uses: benday-inc/set-property-value-in-appsettings@main
-     with:
-       pathtosettingsfile: '${{ github.workspace }}/src/Web/appsettings.json'
-       keyname1: 'ContactFormEmailSettings'
-       keyname2: 'FromName'
-       valuetoset: 'Kevin Becker'
-       keyname2: 'FromAddress'
-       valuetoset: 'kevin@kevinandnell.com'
+    - uses: benday-inc/set-property-value-in-appsettings@main
+      with:
+        pathtosettingsfile: '${{ github.workspace }}/src/Web/appsettings.json'
+        keyname1: 'ContactFormEmailSettings'
+        keyname2: 'FromName'
+        valuetoset: '{{FROMNAME}}'
     - uses: actions/checkout@v4
     - name: Setup .NET
       uses: actions/setup-dotnet@v4

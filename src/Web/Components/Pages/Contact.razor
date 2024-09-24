@@ -1,4 +1,8 @@
 ﻿@page "/Contact"
+@using System.ComponentModel.DataAnnotations
+@using Web.Features.Email
+
+@inject IEmailService EmailService
 
 @inherits BasePage
 
@@ -13,18 +17,17 @@
 
 <!-- Contact Section -->
 <section id="contact" class="contact section">
-
     <div class="container" data-aos="fade-up" data-aos-delay="100">
-
         <div class="row gy-4">
-
             <div class="col-lg-4 order-2 order-lg-1">
                 <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
                     <i class="bi bi-linkedin flex-shrink-0"></i>
                     <div>
                         <h3>LinkedIn</h3>
-                        <p>View my <a href="https://www.linkedin.com/in/ksbecker/" target="_blank">profile</a> and send
-                            me a message.</p>
+                        <p>
+                            View my <a href="https://www.linkedin.com/in/ksbecker/" target="_blank">profile</a> and send
+                            me a message.
+                        </p>
                     </div>
                 </div><!-- End Info Item -->
 
@@ -32,7 +35,8 @@
                     <i class="bi bi-envelope flex-shrink-0"></i>
                     <div>
                         <h3>Email Me</h3>
-                        <p>In order to protect me from spam, you can use this email address to send me a direct email:
+                        <p>
+                            In order to protect me from spam, you can use this email address to send me a direct email:
                             <a href="mailto:wiry05tracks@icloud.com">wiry05tracks@icloud.com</a>
                         </p>
                     </div>
@@ -42,45 +46,90 @@
 
             <div class="col-lg-8 order-1 order-lg-2">
                 <img src="/images/contact-kite.jpg" class="img-fluid"
-                    alt="A kite in the sky with the string coming down" />
+                     alt="A kite in the sky with the string coming down" />
             </div>
 
-            @* <div class="col-lg-8">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up"
-            data-aos-delay="200">
-            <div class="row gy-4">
+            @if (_displayForm)
+            {
+                <div class="col-lg-8">
+                    <EditForm Model="_contactFormData"
+                              OnValidSubmit="OnContactFormValidSubmit"
+                              data-aos="fade-up"
+                              data-aos-delay="200"
+                              class="email-form">
+                        <DataAnnotationsValidator />
 
-            <div class="col-md-6">
-            <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
-            </div>
+                        <div class="row gy-4">
 
-            <div class="col-md-6 ">
-            <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
-            </div>
+                            <div class="col-md-6">
+                                <InputText @bind-Value="_contactFormData.Name"
+                                           type="text"
+                                           class="form-control"
+                                           placeholder="Your Name" />
+                                <ValidationMessage For="@(() => _contactFormData.Name)" class="invalid-feedback" />
+                            </div>
 
-            <div class="col-md-12">
-            <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
-            </div>
+                            <div class="col-md-6 ">
+                                <InputText @bind-Value="_contactFormData.EmailAddress"
+                                           type="text"
+                                           class="form-control"
+                                           placeholder="Your Email" />
+                                <ValidationMessage For="@(() => _contactFormData.EmailAddress)" class="invalid-feedback" />
+                            </div>
 
-            <div class="col-md-12">
-            <textarea class="form-control" name="message" rows="6" placeholder="Message"
-            required=""></textarea>
-            </div>
+                            <div class="col-md-12">
+                                <InputText @bind-Value="_contactFormData.Subject"
+                                           type="text"
+                                           class="form-control"
+                                           placeholder="Subject" />
+                                <ValidationMessage For="@(() => _contactFormData.Subject)" class="invalid-feedback" />
+                            </div>
 
-            <div class="col-md-12 text-center">
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your message has been sent. Thank you!</div>
+                            <div class="col-md-12">
+                                <InputTextArea @bind-Value="_contactFormData.Message"
+                                               class="form-control"
+                                               rows="6"
+                                               placeholder="Message" />
+                                <ValidationMessage For="@(() => _contactFormData.Message)" class="invalid-feedback" />
+                            </div>
 
-            <button type="submit">Send Message</button>
-            </div>
-
-            </div>
-            </form>
-            </div><!-- End Contact Form --> *@
-
+                            <button type="submit">Send Message</button>
+                        </div>
+                    </EditForm>
+                </div>
+            }
+            else if (_isSending)
+            {
+                <div class="loading">
+                    Sending ...
+                </div>
+            }
+            else
+            {
+                <div class="sent-message">
+                    Your message has been sent. Thank you!
+                </div>
+            }
         </div>
-
     </div>
-
 </section><!-- /Contact Section -->
+
+@code {
+    private ContactFormData _contactFormData = new();
+    private CancellationTokenSource _cancellationTokenSource = new();
+    private bool _displayForm = true;
+    private bool _isSending = false;
+
+    private async Task OnContactFormValidSubmit()
+    {
+        _isSending = true;
+        _displayForm = false;
+
+        await EmailService.SendContactFormAsync(_contactFormData, _cancellationTokenSource.Token);
+        
+        // I've added this artificial delay to show the "sending" message
+        await Task.Delay(1_000);
+
+        _isSending = false;
+    }
+}

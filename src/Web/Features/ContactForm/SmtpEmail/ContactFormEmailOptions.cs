@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Web.Features.Email.SmtpEmail;
+namespace Web.Features.ContactForm.SmtpEmail;
 
 public class ContactFormEmailOptions
 {
@@ -14,7 +14,7 @@ public class ContactFormEmailOptions
 
     [Required]
     public string ToName { get; set; } = default!;
-    
+
     [Required, EmailAddress]
     public string ToAddress { get; set; } = default!;
 }

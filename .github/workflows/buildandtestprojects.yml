@@ -15,17 +15,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
     - uses: benday-inc/set-property-value-in-appsettings@main
       with:
         pathtosettingsfile: '${{ github.workspace }}/src/Web/appsettings.json'
         keyname1: 'ContactFormEmailSettings'
         keyname2: 'FromName'
         valuetoset: '{{FROMNAME}}'
-    - uses: actions/checkout@v4
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.0.x
     - name: Restore dependencies
       run: dotnet restore
     - name: Build

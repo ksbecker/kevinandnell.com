@@ -2,3 +2,7 @@ section.page-header {
     padding-top: 60px;
     padding-bottom: 0;
 }
+
+.invalid-feedback {
+    display: block;
+}

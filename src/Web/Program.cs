@@ -1,4 +1,6 @@
 using Web.Components;
+using Web.Features.Email;
+using Web.Features.Email.SmtpEmail;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +8,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services
     .AddRazorComponents()
     .AddInteractiveServerComponents();
+
+builder.Services.AddOptions<SmtpEmailServiceOptions>()
+    .Bind(builder.Configuration.GetSection(SmtpEmailServiceOptions.SectionName))
+    .ValidateOnStart();
+
+builder.Services.AddOptions<ContactFormEmailOptions>()
+    .Bind(builder.Configuration.GetSection(ContactFormEmailOptions.SectionName))
+    .ValidateDataAnnotations()
+    .ValidateOnStart();
+
+builder.Services.AddTransient<IEmailService, SmtpEmailService>();
 
 var app = builder.Build();
 
@@ -17,7 +30,7 @@ if (!app.Environment.IsDevelopment())
     _ = app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+_ = app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 app.UseAntiforgery();

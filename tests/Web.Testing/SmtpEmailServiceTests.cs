@@ -122,7 +122,7 @@ public class SmtpEmailServiceTest
         Options.Create(new SmtpEmailServiceOptions
         {
             Password = "smtpPassword",
-            Port = 123,
+            Port = 25,
             Host = "localhost",
             Username = "smtpUsername",
         });

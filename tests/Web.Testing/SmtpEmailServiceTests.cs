@@ -4,8 +4,8 @@ using Microsoft.Extensions.Options;
 
 using netDumbster.smtp;
 
-using Web.Features.Email;
-using Web.Features.Email.SmtpEmail;
+using Web.Features.ContactForm;
+using Web.Features.ContactForm.SmtpEmail;
 
 namespace Web.Integration.Testing;
 
@@ -14,7 +14,6 @@ public class SmtpEmailServiceTest
     [Fact]
     public async Task SmtpEmailService_ShouldThrowAnArgumentNullException_WhenTheRequestIsNull()
     {
-
         // Arrange
         var emailService = new SmtpEmailService(CreateSmtpEmailServiceOptions(), CreateFormEmailOptions());
 

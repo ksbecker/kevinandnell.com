@@ -1,4 +1,4 @@
-namespace Web.Features.Email;
+namespace Web.Features.ContactForm;
 
 public interface IEmailService
 {

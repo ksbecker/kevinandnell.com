@@ -1,6 +1,6 @@
 using Web.Components;
-using Web.Features.Email;
-using Web.Features.Email.SmtpEmail;
+using Web.Features.ContactForm;
+using Web.Features.ContactForm.SmtpEmail;
 
 var builder = WebApplication.CreateBuilder(args);
 

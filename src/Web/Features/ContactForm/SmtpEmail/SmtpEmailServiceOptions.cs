@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Web.Features.Email.SmtpEmail;
+namespace Web.Features.ContactForm.SmtpEmail;
 
 public sealed class SmtpEmailServiceOptions
 {
@@ -8,10 +8,10 @@ public sealed class SmtpEmailServiceOptions
 
     [Required]
     public string Host { get; set; } = default!;
-    
+
     [Required]
     public int Port { get; set; }
-    
+
     [Required]
     public string Username { get; set; } = default!;
 

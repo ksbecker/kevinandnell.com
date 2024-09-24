@@ -4,7 +4,7 @@ using Microsoft.Extensions.Options;
 
 using MimeKit;
 
-namespace Web.Features.Email.SmtpEmail;
+namespace Web.Features.ContactForm.SmtpEmail;
 
 public sealed class SmtpEmailService(IOptions<SmtpEmailServiceOptions> smtpEmailServiceOptions,
                                      IOptions<ContactFormEmailOptions> contactFormEmailOptions) : IEmailService
@@ -21,7 +21,7 @@ public sealed class SmtpEmailService(IOptions<SmtpEmailServiceOptions> smtpEmail
         message.From.Add(from);
         message.To.Add(to);
         message.Subject = contactFormData.Subject;
-        message.Body = new TextPart("plain") { Text = contactFormData.Message, };
+        message.Body = new TextPart("plain") { Text = contactFormData.EmailMessage, };
 
         using var client = new SmtpClient();
 

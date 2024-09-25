@@ -5,7 +5,6 @@
 @using Web.Features.ContactForm
 
 @inject IEmailService EmailService
-@inject IAnalytics Analytics
 
 <PageTitle>Contact Kevin Becker</PageTitle>
 
@@ -124,8 +123,6 @@
         _displayForm = false;
 
         await EmailService.SendContactFormAsync(_contactFormData, _cancellationTokenSource.Token);
-
-        await Analytics.TrackEvent("ContactFormSubmitted");
 
         // I've added this artificial delay to show the "sending" message
         await Task.Delay(1_000);

@@ -1,19 +1,15 @@
 ﻿@page "/Contact"
+@rendermode InteractiveServer
+
 @using System.ComponentModel.DataAnnotations
 @using Web.Features.ContactForm
 
 @inject IEmailService EmailService
-
-@inherits BasePage
+@inject IAnalytics Analytics
 
 <PageTitle>Contact Kevin Becker</PageTitle>
 
-<section class="section dark-background page-header">
-    <div class="container section-title mt-5" data-aos="fade-up">
-        <h2>Contact Me</h2>
-        <p>Drop a line and I'll get back with you</p>
-    </div>
-</section>
+<PageHeader Title="Contact Me" Subtitle="Drop a line and I'll get back with you" />
 
 <!-- Contact Section -->
 <section id="contact" class="contact section">
@@ -128,6 +124,8 @@
         _displayForm = false;
 
         await EmailService.SendContactFormAsync(_contactFormData, _cancellationTokenSource.Token);
+
+        await Analytics.TrackEvent("ContactFormSubmitted");
 
         // I've added this artificial delay to show the "sending" message
         await Task.Delay(1_000);

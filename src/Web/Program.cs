@@ -1,4 +1,3 @@
-using Blazor.Analytics;
 using Web.Components;
 using Web.Features.ContactForm;
 using Web.Features.ContactForm.SmtpEmail;
@@ -18,8 +17,6 @@ builder.Services.AddOptions<ContactFormEmailOptions>()
     .Bind(builder.Configuration.GetSection(ContactFormEmailOptions.SectionName))
     .ValidateDataAnnotations()
     .ValidateOnStart();
-
-builder.Services.AddGoogleAnalytics("G-6YNME1EDCL", true);
 
 builder.Services.AddTransient<IEmailService, SmtpEmailService>();
 

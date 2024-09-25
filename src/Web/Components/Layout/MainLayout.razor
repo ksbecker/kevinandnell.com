@@ -2,6 +2,8 @@
 
 @using BlazorPageScript
 
+@inject IAnalytics Analytics
+
 <PageScript Src="./js/init.js" />
 
 <Header />
@@ -24,5 +26,17 @@
 </div>
 
 @code {
+    protected override void OnInitialized()
+    {
+        var userId = $"userid{DateTime.Now.Ticks}";
 
+        var globalConfigData = new Dictionary<string, object>();
+        globalConfigData["user_id"] = userId;
+
+        var globalEventData = new Dictionary<string, object>();
+        globalEventData["user_id"] = userId;
+
+        Analytics.ConfigureGlobalConfigData(globalConfigData);
+        Analytics.ConfigureGlobalEventData(globalEventData);
+    }
 }

@@ -16,7 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{9F69A6CC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Integration.Testing", "tests\Web.Testing\Web.Integration.Testing.csproj", "{038D2A53-7DD6-45E7-AAEC-6A300A255AA7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorPageScript", "BlazorPageScript\BlazorPageScript.csproj", "{01E5D3AA-82A2-4CBF-9C47-20ADC6549197}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorPageScript", "BlazorPageScript\BlazorPageScript.csproj", "{01E5D3AA-82A2-4CBF-9C47-20ADC6549197}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

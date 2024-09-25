@@ -19,7 +19,7 @@ builder.Services.AddOptions<ContactFormEmailOptions>()
     .ValidateDataAnnotations()
     .ValidateOnStart();
 
-builder.Services.AddGoogleAnalytics("G-6YNME1EDCL");
+builder.Services.AddGoogleAnalytics("G-6YNME1EDCL", true);
 
 builder.Services.AddTransient<IEmailService, SmtpEmailService>();
 

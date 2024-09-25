@@ -41,7 +41,7 @@
 
             <div class="col-lg-8 order-1 order-lg-2">
                 <img src="/images/contact-kite.jpg" class="img-fluid"
-                     alt="A kite in the sky with the string coming down" />
+                    alt="A kite in the sky with the string coming down" />
             </div>
         </div>
         <div class="row gy-4 mt-1">
@@ -49,49 +49,44 @@
                 <p>You can send me an email via this form. I promise I won't abuse it.</p>
                 @if (_displayForm)
                 {
-                    <EditForm Model="_contactFormData"
-                              OnValidSubmit="OnContactFormValidSubmit"
-                              data-aos="fade-up"
-                              data-aos-delay="200"
-                              class="email-form">
+                    <EditForm Model="_contactFormData" OnValidSubmit="OnContactFormValidSubmit" data-aos="fade-up"
+                        data-aos-delay="200" class="email-form">
                         <DataAnnotationsValidator />
 
                         <div class="row gy-4">
 
                             <div class="col-md-6">
-                                <InputText @bind-Value="_contactFormData.Name"
-                                           type="text"
-                                           class="form-control"
-                                           placeholder="Your Name" />
+                                <InputText @bind-Value="_contactFormData.Name" type="text" class="form-control"
+                                    placeholder="Your Name" />
                                 <ValidationMessage For="@(() => _contactFormData.Name)" class="invalid-feedback" />
                             </div>
 
                             <div class="col-md-6 ">
-                                <InputText @bind-Value="_contactFormData.EmailAddress"
-                                           type="text"
-                                           class="form-control"
-                                           placeholder="Your Email" />
+                                <InputText @bind-Value="_contactFormData.EmailAddress" type="text" class="form-control"
+                                    placeholder="Your Email" />
                                 <ValidationMessage For="@(() => _contactFormData.EmailAddress)" class="invalid-feedback" />
                             </div>
 
                             <div class="col-md-12">
-                                <InputText @bind-Value="_contactFormData.Subject"
-                                           type="text"
-                                           class="form-control"
-                                           placeholder="Subject" />
+                                <InputText @bind-Value="_contactFormData.Subject" type="text" class="form-control"
+                                    placeholder="Subject" />
                                 <ValidationMessage For="@(() => _contactFormData.Subject)" class="invalid-feedback" />
                             </div>
 
                             <div class="col-md-12">
-                                <InputTextArea @bind-Value="_contactFormData.Message"
-                                               class="form-control"
-                                               rows="6"
-                                               placeholder="Message" />
+                                <InputTextArea @bind-Value="_contactFormData.Message" class="form-control" rows="6"
+                                    placeholder="Message" />
                                 <ValidationMessage For="@(() => _contactFormData.Message)" class="invalid-feedback" />
                             </div>
 
                             <button type="submit">Send Message</button>
                         </div>
+                        @if (_displayErrorMessage)
+                        {
+                            <div class="error-message mt-2">
+                                There was an error sending the message. You may want to try sending a letter.
+                            </div>
+                        }
                     </EditForm>
                 }
                 else if (_isSending)
@@ -116,17 +111,25 @@
     private CancellationTokenSource _cancellationTokenSource = new();
     private bool _displayForm = true;
     private bool _isSending = false;
+    private bool _displayErrorMessage = false;
 
     private async Task OnContactFormValidSubmit()
     {
         _isSending = true;
         _displayForm = false;
 
-        await EmailService.SendContactFormAsync(_contactFormData, _cancellationTokenSource.Token);
+        var result = await EmailService.SendContactFormAsync(_contactFormData, _cancellationTokenSource.Token);
 
-        // I've added this artificial delay to show the "sending" message
-        await Task.Delay(1_000);
-
+        if (result.IsT1)
+        {
+            _displayForm = true;
+            _displayErrorMessage = true;
+        }
+        else
+        {
+            // I've added this artificial delay to show the "sending" message
+            await Task.Delay(1_000);
+        }
         _isSending = false;
     }
 }

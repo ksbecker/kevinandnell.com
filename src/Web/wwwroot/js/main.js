@@ -22,7 +22,7 @@ function toggleScrolled() {
   )
     return;
 
-  window.scrollY > 100
+  window.scrollY > 10
     ? selectBody.classList.add("scrolled")
     : selectBody.classList.remove("scrolled");
 }

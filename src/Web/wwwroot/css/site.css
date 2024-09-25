@@ -6,3 +6,12 @@ section.page-header {
 .invalid-feedback {
     display: block;
 }
+
+.email-form .error-message {
+    background: #df1529;
+    color: #ffffff;
+    text-align: left;
+    padding: 15px;
+    margin-bottom: 24px;
+    font-weight: 600;
+}

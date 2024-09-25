@@ -17,4 +17,8 @@
 		<Folder Include="wwwroot\images\logos\" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\..\BlazorPageScript\BlazorPageScript.csproj" />
+	</ItemGroup>
+
 </Project>

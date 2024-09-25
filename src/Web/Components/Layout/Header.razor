@@ -13,16 +13,16 @@
                 <li><NavLink Match="NavLinkMatch.All" href="/">Home<br></NavLink></li>
                 <li><NavLink Match="NavLinkMatch.All" href="/Resume">Resume</NavLink></li>
                 <li class="dropdown">
-                    <a href="/AboutMe"><span>About Me</span> <i
-                            class="bi bi-chevron-down toggle-dropdown"></i></a>
+                    <NavLink Match="NavLinkMatch.Prefix" href="/AboutMe"><span>About Me</span> <i
+                            class="bi bi-chevron-down toggle-dropdown"></i></NavLink>
                     <ul>
-                        <li><a href="/AboutMe#about-me">About Me</a></li>
-                        <li><a href="/AboutMe#hobbies">Hobbies</a></li>
-                        <li><a href="/AboutMe#fun-facts">Fun Facts</a></li>
+                        <li><NavLink Match="NavLinkMatch.All" href="/AboutMe#about-me">About Me</NavLink></li>
+                        <li><NavLink Match="NavLinkMatch.All" href="/AboutMe#hobbies">Hobbies</NavLink></li>
+                        <li><NavLink Match="NavLinkMatch.All" href="/AboutMe#fun-facts">Fun Facts</NavLink></li>
                     </ul>
                 </li>
-                <li><a href="/Contact">Contact Me</a></li>
-                <li><a href="/AboutThisSite">About This Site</a></li>
+                <li><NavLink Match="NavLinkMatch.All" href="/Contact">Contact Me</NavLink></li>
+                <li><NavLink Match="NavLinkMatch.All" href="/AboutThisSite">About This Site</NavLink></li>
             </ul>
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>

@@ -12,44 +12,143 @@
                 <p>
                     I built this site to showcase my skills as a .NET web developer. I wanted to create a site that was
                     visually appealing, easy to navigate, and responsive on all devices. I also wanted to create a site
-                    that was easy to update and maintain, so I decided to build it using Blazor Server.
+                    that was easy to update and maintain, so I decided to build it using Blazor.
                 </p>
             </div>
             <div class="col-lg-6" data-aos="fade-up">
                 <h2>How I Built This Site</h2>
                 <p>
-                    I built this site using Blazor Server, a web framework from Microsoft that allows you to build
-                    interactive web applications using C# and .NET. It is being hosted on Google Cloud Run in a Docker
-                    container. The source code is hosted on <a href="https://github.com/ksbecker/kevinandnell.com"
-                        target="_blank">GitHub</a>, and I used Visual Studio Code for development.
+                    I built this site using Blazor, a web framework from Microsoft that allows you to build interactive
+                    web applications using C# and .NET. It is being hosted on Google Cloud Run in a Docker container.
+                    The source code is hosted on <a href="https://github.com/ksbecker/kevinandnell.com"
+                        target="_blank">GitHub</a>, and I used Visual Studio Code and Visual Studio 2022 for
+                    development. The site is deployed using Google Cloud Build.
                 </p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- 
+<!-- Features Section -->
+<section id="features" class="features call-to-action section dark-background">
+    <img src="/images/about-this-site-frog.jpg" alt="A figurine of a frog using a laptop computer" />
 
-Practices used:
-Clean code
-SOLID principles
-Dependency injection
-Unit testing
-Error handling
-Interfaces
-Vertical slicing architecture
-DRY - Don't Repeat Yourself
-TDD - Test Driven Development
+    <div class="container">
 
-Logging? - where can I log with ILogger?
+        <div class="row gy-4">
+            <h2 data-aos="fade-up" data-aos-delay="200">While functionality is minimal, the site is built using many
+                best practices.</h2>
 
-Libraries used:
-MailKit
-QuestPDF
+            <div class="col-lg-12 row mt-1">
+
+                <div class="features-item col-sm-12 col-md-4 col-lg-6 d-flex ps-0 ps-lg-3 mt-3" data-aos="fade-up"
+                    data-aos-delay="200">
+                    <i class="bi bi-clipboard-check flex-shrink-0"></i>
+                    <div>
+                        <h4>Test Driven Development</h4>
+                        <p>Tests were written first, identifying behaviors and the product of those behaviors. The
+                            process typically follows a cyclical pattern known as the "Red-Green-Refactor" cycle.</p>
+                    </div>
+                </div><!-- End Features Item-->
+
+                <div class="features-item col-sm-12 col-md-4 col-lg-6 d-flex ps-0 ps-lg-3 mt-3" data-aos="fade-up"
+                    data-aos-delay="300">
+                    <i class="bi bi-box-seam flex-shrink-0"></i>
+                    <div>
+                        <h4>Dependency Injection</h4>
+                        <p>Using DI container technology, I'm able to inject needed dependent services into other
+                            services. This is also an important part of being able to properly test code.</p>
+                    </div>
+                </div><!-- End Features Item-->
+
+                <div class="features-item col-sm-12 col-md-4 col-lg-6 d-flex ps-0 ps-lg-3 mt-3" data-aos="fade-up"
+                    data-aos-delay="400">
+                    <i class="bi bi-shield-x flex-shrink-0"></i>
+                    <div>
+                        <h4>Error Handling</h4>
+                        <p>I believe good applications should never crash. Guarding against crashes is only half the
+                            problem. Handling errors is just as important. The user deserves to understand when there is
+                            a problem and what the application expects of them.</p>
+                    </div>
+                </div><!-- End Features Item-->
+
+                <div class="features-item col-sm-12 col-md-4 col-lg-6 d-flex ps-0 ps-lg-3 mt-3" data-aos="fade-up"
+                    data-aos-delay="500">
+                    <i class="bi bi-chevron-bar-contract flex-shrink-0"></i>
+                    <div>
+                        <h4>Interfaces</h4>
+                        <p>Not all services can or will be replaced. However, using interfaces allows proper testing.
+                            And in those cases when you switch from one email service provider to another, it makes
+                            switching so much easier.</p>
+                    </div>
+                </div><!-- End Features Item-->
+
+                <div class="features-item col-sm-12 col-md-4 col-lg-6 d-flex ps-0 ps-lg-3 mt-3" data-aos="fade-up"
+                    data-aos-delay="500">
+                    <i class="bi bi-sliders2-vertical flex-shrink-0"></i>
+                    <div>
+                        <h4>Vertical Slice Architecture</h4>
+                        <p>Modularity, independent development, focused testing, faster delivery, and scalability are
+                            just a few of the advantages of Vertical Slice Architecture.</p>
+                    </div>
+                </div><!-- End Features Item-->
+
+                <div class="features-item col-sm-12 col-md-4 col-lg-6 d-flex ps-0 ps-lg-3 mt-3" data-aos="fade-up"
+                    data-aos-delay="500">
+                    <i class="bi bi-code-slash flex-shrink-0"></i>
+                    <div>
+                        <h4>DRY and SOLID</h4>
+                        <p>These coding pricipals have been around for a long time for good reason. These make code
+                            easier to maintain and evolve over time.</p>
+                    </div>
+                </div><!-- End Features Item-->
+
+            </div>
+        </div>
+
+    </div>
+
+</section><!-- /Features Section -->
 
 
-Design by BootstrapMade
-Modified JS from design to work with Blazor
 
-All photos are by Kevin Becker
- -->
+<section id="about" class="about section">
+    <div class="container aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4">
+            <h3>Technologies used on this website</h3>
+            <div class="col-lg-6 order-2 order-lg-1 content">
+                <p class="fst-italic">
+                    Development Pipeline
+                </p>
+                <ul>
+                    <li><i class="bi bi-check2-all"></i> <span>Visual Studio 2022 and Visual Studio Code</span></li>
+                    <li><i class="bi bi-check2-all"></i> <span>dotnet 8 & C#</span></li>
+                    <li><i class="bi bi-check2-all"></i> <span>Blazor</span></li>
+                    <li><i class="bi bi-check2-all"></i> <span>GitHub &amp; GitHub Actions</span></li>
+                    <li><i class="bi bi-check2-all"></i> <span>Google Cloud Build</span></li>
+                </ul>
+            </div>
+            <div class="col-lg-6 order-2 order-lg-1 content">
+                <p class="fst-italic">
+                    Hosting
+                </p>
+                <ul>
+                    <li><i class="bi bi-check2-all"></i> <span>Google Cloud Run</span></li>
+                    <li><i class="bi bi-check2-all"></i> <span>Docker</span></li>
+                </ul>
+                <p class="fst-italic">
+                    Nuget Libraries
+                </p>
+                <ul>
+                    <li><i class="bi bi-check2-all"></i> <span><a href="https://www.nuget.org/packages/MailKit"
+                                target="_blank">MailKit</a></span></li>
+                    <li><i class="bi bi-check2-all"></i> <span><a href="https://www.nuget.org/packages/OneOf"
+                                target="_blank">OneOf</a></span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row gy-4">
+            The website design is by BootstrapMade. All photos are by Kevin Becker.
+        </div>
+    </div>
+</section>

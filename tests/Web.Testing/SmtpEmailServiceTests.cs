@@ -3,7 +3,6 @@ using FluentAssertions;
 using Microsoft.Extensions.Options;
 
 using netDumbster.smtp;
-
 using Web.Features.ContactForm;
 using Web.Features.ContactForm.SmtpEmail;
 
@@ -12,20 +11,20 @@ namespace Web.Integration.Testing;
 public class SmtpEmailServiceTest
 {
     [Fact]
-    public async Task SmtpEmailService_ShouldThrowAnArgumentNullException_WhenTheRequestIsNull()
+    public async Task SmtpEmailService_ShouldReturnError_WhenTheRequestIsNull()
     {
         // Arrange
         var emailService = new SmtpEmailService(CreateSmtpEmailServiceOptions(), CreateFormEmailOptions());
 
         // Act
-        var handleSendEmail = () => emailService.SendContactFormAsync(null!, default);
+        var result = await emailService.SendContactFormAsync(null!, default);
 
         // Assert
-        _ = await handleSendEmail.Should().ThrowAsync<ArgumentNullException>();
+        _ = result.IsT1.Should().Be(true);
     }
 
     [Fact]
-    public async Task SmtpEmailService_ShouldReturnTrue_WhenItSucceeds()
+    public async Task SmtpEmailService_ShouldReturnSuccess_WhenItSucceeds()
     {
         // Arrange
         var emailServiceOptions = CreateSmtpEmailServiceOptions();
@@ -45,7 +44,7 @@ public class SmtpEmailServiceTest
         var result = await emailService.SendContactFormAsync(sendWebFormRequest, default);
 
         // Assert
-        _ = result.Should().BeTrue();
+        _ = result.IsT0.Should().BeTrue();
         _ = smtpServer.ReceivedEmailCount.Should().Be(1);
 
         // Clean up
